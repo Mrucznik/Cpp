@@ -1,0 +1,16 @@
+Stos C 
+Zaimplementuj w języku C stos liczb całkowitych. Zapewnij następującą funkcjonalność:
+
+void init(struct Stack* s)
+void destroy(struct Stack* s)
+void push(struct Stack* s, int element)
+int pop(struct Stack* s)
+void clear(struct Stack* s)
+bool isEmpty(struct Stack* s) - upewnij się ze załączasz plik nagłówkowy stdbool.h - konieczne aby używać typu bool w języku C
+Użyj dynamicznie alokowanej tablicy do przechowywania elementów na stosie. Gdy tablica się zapełni zwiększaj jej rozmiar dwukrotnie. W razie wystąpienia błędu (np. wywołanie funkcji pop gdy stos jest pusty) wywołuj funkcję assert lub abort aby zakończyć działanie programu. 
+Podziel program na następujące pliki: Stack.h, Stack.c, main.c. Nie jest wymagane przygotowanie pliku makefile. 
+Wskazówka: możesz zdefiniować strukturę z użyciem słowa kluczowego typedef aby nie trzeba było później w programie wszędzie stosować słowa kluczowego struct. 
+Wymaganie: za pomocą programu valgrind sprawdź czy poprawnie zarządzasz pamięcią.
+
+Stos C++ 
+Napisz w języku C++ klasę Stack o funkcjonalności analogicznej jak w poprzednim zadaniu. Tak jak w poprzednim zadaniu możesz używać funkcji malloc i free do alokacji i zwalniania pamięci (nie musisz używać operatorów new i delete). Zastąp funkcje init oraz destroy odpowiednio konstruktorem i destruktorem. Podziel program na następujące pliki: Stack.h, Stack.cpp, main.cpp. Nie jest wymagane przygotowanie pliku makefile. Wymaganie: za pomocą programu valgrind sprawdź czy poprawnie zarządzasz pamięcią.
