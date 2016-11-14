@@ -11,7 +11,6 @@ int main()
 	{
 		fseek(stdin, 0, SEEK_END);
 		fflush(stdin);
-		getchar();
 		printf("Opcje:\n1-push\n2-pop\n3-clear\n4-isEmpty\n: ");
 		k = scanf("%d", &opcja);
 	} while(k != 1 || (opcja < 1 || opcja > 4));

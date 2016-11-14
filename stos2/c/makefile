@@ -10,4 +10,4 @@ main.o: main.c Stack.h
 .PHONY: clean
 
 clean:
-	-rm Stack.o main.o prog
+	-rm Stack.o main.o progc

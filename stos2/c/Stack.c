@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "Stack.h"
 
 void init(Stack* s)
@@ -25,11 +26,7 @@ void push(Stack* s, int element)
 
 int pop(Stack* s)
 {
-	if(isEmpty(s)) 
-	{
-		destroy(s);
-		abort();
-	}
+	assert(s->top > 0);
 	return s->dane[--s->top];
 }
 
