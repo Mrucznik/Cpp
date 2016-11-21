@@ -1,4 +1,5 @@
 #include <cmath>
+#include <iostream>
 #include "complex.hpp"
 
 Complex::Complex()
@@ -58,27 +59,6 @@ Complex &Complex::operator/=(Complex c)
     return *this;
 }
 
-Complex Complex::operator+(const Complex& c) const
-{
-    return Complex(real+c.real, imaginary+c.imaginary);
-}
-
-Complex Complex::operator-(const Complex& c) const
-{
-    return Complex(real-c.real, imaginary-c.imaginary);
-}
-
-Complex Complex::operator*(const Complex& c) const
-{
-    return Complex(real*c.real - imaginary*c.imaginary, imaginary*c.real - real*c.imaginary);
-}
-
-Complex Complex::operator/(const Complex& c) const
-{
-    double divisor = imaginary*imaginary + c.imaginary*c.imaginary;
-    return Complex((real*c.real + imaginary*c.imaginary)/divisor, (imaginary*c.real + real*c.imaginary)/divisor);
-}
-
 Complex Complex::operator-() const
 {
     return Complex(-real, -imaginary);
@@ -113,4 +93,3 @@ double Complex::getPhase() const
 {
     return atan2(imaginary, real);
 }
-
