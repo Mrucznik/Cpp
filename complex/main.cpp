@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Complex.h"
+#include "complex.hpp"
 
 using namespace std;
 
 int main()
 {
-    Complex a, b, c, d;
+    Complex a;
     cout << "Hello, World!" << endl;
     return 0;
 }

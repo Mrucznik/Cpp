@@ -1,5 +1,5 @@
 #include <cmath>
-#include "Complex.h"
+#include "complex.hpp"
 
 Complex::Complex()
 {

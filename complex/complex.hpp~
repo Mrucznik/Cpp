@@ -56,7 +56,7 @@ public:
 	{
 	};
 	
-	Complcex operator+(const Complex& c) const
+	Complex operator+(const Complex& c) const
 	{
 		return Complex(real+c.real, imaginary+c.imaginary);
 	};
