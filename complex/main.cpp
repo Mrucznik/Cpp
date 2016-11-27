@@ -241,7 +241,6 @@ public:
 
                     wykonajDzialanie(dzialanie2, 'x', 'x');
                     wykonajDzialanie(dzialanie1, wynik, 'z');
-                    cout << "ZASKOCZYLO";
                 }
                 else
                 {
