@@ -1,156 +1,204 @@
-#include <math.h>
 #include <iostream>
-#include <stdlib.h>
+#include <regex>
 #include "complex.hpp"
-void Menu_Printf()
-{
-    std::cout << "Menu - _Complex"<<std::endl;
-    std::cout << "[MODIFY FIRST CLASS]"<<std::endl;
-    std::cout << "\t [1] - Set new Re z"<<std::endl;
-    std::cout << "\t [2] - Set new Im z"<<std::endl;
 
-   std::cout << "[MODIFY SECOND CLASS]"<<std::endl;
-    std::cout << "\t [3] - Set new Re z"<<std::endl;
-    std::cout << "\t [4] - Set new Im z"<<std::endl;
-}
-void Complex_Printf(Complex &Complex_First,Complex &Complex_Second)
+using namespace std;
+
+class Calculator
 {
-    Complex l_Complex;   
-    std::cout  << Complex_First << Complex_Second;
-    std::cout << "ARGUMENT [1]:" << Complex_First.GetArg() << std::endl;
-    std::cout << "ARGUMENT [2]:" << Complex_Second.GetArg() << std::endl;
-    std::cout << "|Z| [1]:" << Complex_First.GetAbs() << std::endl;
-    std::cout << "|Z| [2]:" << Complex_Second.GetAbs() << std::endl;
-    std::cout << "A - B \t" << Complex_First - Complex_Second << std::endl;
-    std::cout << "A + B \t" << Complex_First + Complex_Second << std::endl;
-    std::cout << "B - A \t" << Complex_Second - Complex_First << std::endl;
-    std::cout << "B + A \t" << Complex_Second + Complex_First << std::endl;
-    std::cout << "A * B \t" << Complex_First * Complex_Second << std::endl;
-    std::cout << "B * A \t" << Complex_Second * Complex_First << std::endl;
-    std::cout << "A / B \t" << Complex_First / Complex_Second << std::endl;
-    std::cout << "B / A \t" << Complex_Second / Complex_First << std::endl;
-  
-    if(Complex_Second == Complex_First)
+private:
+    const int range = 'z'-'a'+1;
+    int zmiennaInt[range];
+    double zmiennaDouble[range];
+    Complex zmienna[range];
+    enum eTypZmiennej
     {
-        std::cout << "[A] == [B]" << std::endl << std::endl;
+        EMPTY,
+        INT,
+        DOUBLE,
+        COMPLEX
+    } typZmiennej[range];
+
+    int GetIndex(char a)
+    {
+        int idx = 'z'-a;
+        if(idx < 0 || idx > range)
+            throw "Out of range exeption";
+        return idx;
     }
 
-    else
+    char GetName(int a)
     {
-        std::cout << "[A] != [B]" << std::endl << std::endl;
+        return 'z'+a;
     }
 
-	l_Complex = Complex_Second;
-	l_Complex*= Complex_First.GetReal();
-	std::cout << Complex_Second << " * " << Complex_First.GetReal() << " = " << l_Complex << std::endl << std::endl;
+    eTypZmiennej GetType(char name)
+    {
+        return typZmiennej[GetIndex(name)];
+    }
 
-	l_Complex = Complex_Second;
-	l_Complex*= Complex_First.GetImag();
-	std::cout << Complex_Second << " * " << Complex_First.GetImag() << " = " << l_Complex << std::endl << std::endl;
+    void wyswietlZmienne()
+    {
+        for(int i=0; i<range; i++)
+        {
+            switch(typZmiennej[i])
+            {
+                case INT:
+                    cout << "Zmienna: int " << GetName(i) << " = " << cout << zmiennaInt[i] << endl;
+                    break;
+                case DOUBLE:
+                    cout << "Zmienna: double " << GetName(i) << " = " << cout << zmiennaInt[i] << endl;
+                    break;
+                case COMPLEX:
+                    cout << "Zmienna: Complex " << GetName(i) << " = " << cout << zmiennaInt[i] << endl;
+                    break;
+            }
+        }
+    }
+public:
+    //=, +=, -=, *=, /-, ==, !=, +, -, *, /, R - czesc rzeczywista, I - czesc urojona, A - amplituda, P - faza
+    enum eDzialanie
+    {
+        NONE,
+        PRZYPISZ,
+        PRZYPISZ_PLUS,
+        PRZYPISZ_MINUS,
+        PRZYPISZ_RAZY,
+        PRZYPISZ_DZIEL,
+        CZYROWNE,
+        NIEROWNE,
+        PLUS,
+        MINUS,
+        RAZY,
+        DZIEL,
+        RZECZYWISTA,
+        UROJONA,
+        AMPLITUDA,
+        FAZA
+    };
 
-	l_Complex = Complex_Second;
-	l_Complex*= Complex_Second.GetReal();
-	std::cout << Complex_Second << " * " << Complex_Second.GetReal() << " = " << l_Complex << std::endl << std::endl;
+    Calculator()
+    {
+        for(int i=0; i<range; i++)
+        {
+            typZmiennej[i] = EMPTY;
+        }
+    }
 
-	l_Complex = Complex_Second;
-	l_Complex*= Complex_Second.GetImag();
-	l_Complex = Complex_Second.GetImag() * Complex_Second;
-	std::cout << Complex_Second << " * " << Complex_Second.GetImag() << " = " << l_Complex << std::endl << std::endl;
+    void zapiszZmienna(char name, int a)
+    {
+        int idx = GetIndex(name);
+        zmiennaInt[idx] = a;
+        typZmiennej[idx] = INT;
+    }
 
-	l_Complex = Complex_First;
-	l_Complex*= Complex_First.GetReal();
-	std::cout << Complex_First << " * " << Complex_First.GetReal() << " = " << l_Complex << std::endl << std::endl;
-	l_Complex = Complex_First;
-	l_Complex*= Complex_First.GetImag();
-	std::cout << Complex_First << " * " << Complex_First.GetImag() << " = " << l_Complex << std::endl << std::endl;
+    void zapiszZmienna(char name, double a)
+    {
+        int idx = GetIndex(name);
+        zmiennaDouble[idx] = a;
+        typZmiennej[idx] = DOUBLE;
+    }
 
-	l_Complex = Complex_First;
-	l_Complex*= Complex_Second.GetReal();
-	std::cout << Complex_First << " * " << Complex_Second.GetReal() << " = " << l_Complex << std::endl << std::endl;
+    void zapiszZmienna(char name, Complex a)
+    {
+        int idx = GetIndex(name);
+        zmiennaComplex[idx] = a;
+        typZmiennej[idx] = COMPLEX;
+    }
 
+    void zapiszZmienna(char name, char zmienna)
+    {
+        switch(GetType(zmienna))
+        {
+            case INT:
 
-	l_Complex = Complex_Second.GetImag() * Complex_First;
-	std::cout << Complex_First << " * " << Complex_Second.GetImag() << " = " << l_Complex << std::endl << std::endl << std::endl;
+                break;
+            case DOUBLE:
+                break;
+            case COMPLEX:
+                break;
+        }
+    }
 
-	l_Complex =  Complex_First - Complex_Second.GetImag();
-	std::cout << Complex_First << " - " << Complex_Second.GetImag() << " = " << l_Complex << std::endl << std::endl;
+    void getZmienna(char name, double& a)
+    {
 
-	l_Complex =  Complex_First + Complex_Second.GetImag();
-	std::cout << Complex_First << " + " << Complex_Second.GetImag() << " = " << l_Complex << std::endl << std::endl;
+    }
 
-	l_Complex =  Complex_First - Complex_Second.GetReal();
-	std::cout << Complex_First << " - " << Complex_Second.GetReal() << " = " << l_Complex << std::endl << std::endl;
+    void getZmienna(char name, int& a)
+    {
 
+    }
 
-	l_Complex =  Complex_First + Complex_Second.GetReal();
-	std::cout << Complex_First << " + " <<  Complex_Second.GetReal() + Complex_Second.GetReal() << " = " << l_Complex << std::endl << std::endl;  
-	std::cout << Complex_First - Complex_Second;
-}
-  
+    void getZmienna(char name, Complex& a)
+    {
+
+    }
+
+    eTypZmiennej wybierzTypZapisu(char zmienna1, char zmienna2, char zmienna3)
+    {
+        if(GetType(zmienna1) == GetType(zmienna2) == GetType(zmienna3))
+            return GetType(zmienna1);
+
+        if(GetType(zmienna1) == COMPLEX || GetType(zmienna2) == COMPLEX || GetType(zmienna3) == COMPLEX)
+            return COMPLEX;
+
+        if(GetType(zmienna1) == DOUBLE || GetType(zmienna2) == DOUBLE || GetType(zmienna3) == DOUBLE)
+            return DOUBLE;
+
+        return INT;
+    }
+
+    void wykonajDzialanie(eDzialanie dzialanie, char wynik, char zmienna1, char zmienna2)
+    {
+        switch(dzialanie)
+        {
+            case PRZYPISZ:
+                eTypZmiennej zapis = wybierzTypZapisu(wynik, zmienna1, zmienna2);
+                if(zapis == INT)
+                {
+
+                }
+                else if(zapis == DOUBLE)
+                {
+
+                }
+                else if(zapis == COMPLEX)
+                {
+
+                }
+                break;
+        }
+    }
+
+    void oblicz(string wyrazenie)
+    {
+
+    }
+};
+
 int main()
 {
-    Complex Complex_First,Complex_Second;
-    char l_Controller;
-    float l_Temporary;
-    Complex_Second-=Complex_Second-=Complex_Second;
-   do
-    {
-            Menu_Printf();
-            Complex_Printf(Complex_First,Complex_Second);
-    	    std::cin >> l_Controller;
-            l_Controller-=48;
-      	    switch(l_Controller)
-            {
-        	case 1:
-            	{
-                	std::cout<<"[ENTER NEW VALUE]"<<std::endl;
-                	std::cin >> l_Temporary;
-			if(std::cin.fail())
-			{
-				abort();
-			}
-                	Complex_First.SetReal(l_Temporary);
-               	        break;
-            	}	
-        	case 2:
-            	{
-                	std::cout<<"[ENTER NEW VALUE]"<<std::endl;
-               		std::cin >> l_Temporary;
-			if(std::cin.fail())
-			{
-				abort();
-			}
-                	Complex_First.SetImag(l_Temporary);
-               	 	break;
-            	}
-       		case 3:
-            	{
-	                std::cout<<"[ENTER NEW VALUE]"<<std::endl;
-	                std::cin >> l_Temporary;
-			if(std::cin.fail())
-			{
-				abort();
-			}
-	                Complex_Second.SetReal(l_Temporary);
-	                break;
-	            }
-	        case 4:
-	            {
-	                std::cout<<"[ENTER NEW VALUE]"<<std::endl;
-        	        std::cin >> l_Temporary;
-			if(std::cin.fail())
-			{
-				abort();
-			}
-        	        Complex_Second.SetImag(l_Temporary);
-        	        break;
-       		    }
+    Calculator calc;
+    cout << "--- Kalkulator liczb zespolonych ---" << endl;
+    cout << "Instrukcja obslugi:" << endl;
+    cout << "W wyrazeniach mozna uzywac zmiennych. Nazwa zmiennej musi byc pojedyncza litera z zakresu [a-u]" << endl;
+    cout << "Aby stworzyc zmienna nalezy wpisac jej nazwe a potem w nawiasach podac jej wartosc. Dla zespolonych oddzielic wartosc rzeczywista i urojona przecinkiem." << endl;
+    cout << "Aby wykonac dzialanie nalezy uzyc ktoregos z operatorw przypisania a nastepnie wpisac dzialanie. Jezeli brak operatora przypisania dzialanie zostanie przypisane do zmiennej z. Stale sa przypisywane do zmiennych x i y. Dostepne operatory:" << endl;
+    cout << "=, +=, -=, *=, /-, ==, !=, +, -, *, /\noraz: R - czesc rzeczywista, I - czesc urojona, A - amplituda, P - faza" << endl;
+    cout << "Mozna wykonywac tylko pojedyncze operacje na jedno wyrazenie. Aby zakonczyc dzialanie programu nalezy wpisac X" << endl;
 
-	        default:
-	            break;
+    string wyrazenie;
+    while(true)
+    {
+        cout << "Wpisz wyrazenie" << endl;
+        cin >> wyrazenie;
+        if(wyrazenie[0] == 'X')
+        {
+            cout << "Zakonczono dzialanie kalkulatora" << endl;
+            break;
         }
-	std::cout<<std::endl<<std::endl;
+
+        calc.oblicz(wyrazenie);
     }
-	while(l_Controller);  
-	return 0;
 }
