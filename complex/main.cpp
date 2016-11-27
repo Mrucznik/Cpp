@@ -10,7 +10,7 @@ private:
     const int range = 'z'-'a'+1;
     int zmiennaInt[range];
     double zmiennaDouble[range];
-    Complex zmienna[range];
+    Complex zmiennaComplex[range];
     enum eTypZmiennej
     {
         EMPTY,
