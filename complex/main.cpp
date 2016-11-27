@@ -9,6 +9,7 @@ class Calculator
 private:
     static const int range = 'z'-'a'+1;
     Complex zmienna[range];
+    bool used[range];
 
     int GetIndex(char a)
     {
@@ -20,7 +21,7 @@ private:
 
     char GetName(int a)
     {
-        return 'a'+a;
+        return 'a'+(char)a;
     }
 
     enum eDzialanie
@@ -41,7 +42,6 @@ private:
         UROJONA,
         AMPLITUDA,
         FAZA,
-        USUN
     };
 
     eDzialanie PobierzDzialanie(string dzialanie)
@@ -70,14 +70,12 @@ private:
             return ILORAZ;
         else if (dzialanie == "R")
             return RZECZYWISTA;
-        else if (dzialanie == "I")
+        else if (dzialanie == "U" || dzialanie == "I")
             return UROJONA;
         else if (dzialanie == "A")
             return AMPLITUDA;
-        else if (dzialanie == "P")
+        else if (dzialanie == "F" || dzialanie == "P")
             return FAZA;
-        else if (dzialanie == "D")
-            return USUN;
         else
             return NONE;
     }
@@ -86,15 +84,20 @@ public:
     Calculator()
     {
         for(int i=0; i<range; i++)
+        {
             zmienna[i] = 0;
+            used[i] = false;
+        }
     }
 
     void wyswietlZmienne()
     {
-        for(int i=0; i<range; i++)
+        for(int i=0; i<range-3; i++)
         {
-            char name = GetName(i);
-            cout << "Zmienna: " << name << " = " << zmienna[i] << endl;
+            if(used[i])
+            {
+                cout << "Zmienna: " << GetName(i) << " = " << zmienna[i] << endl;
+            }
         }
     }
 
@@ -102,11 +105,18 @@ public:
     void zapiszZmienna(char name, Complex a)
     {
         zmienna[GetIndex(name)] = a;
+        used[GetIndex(name)] = true;
     }
 
     void zapiszZmienna(char name, char zrodlo)
     {
         zmienna[GetIndex(name)] = zmienna[GetIndex(zrodlo)];
+        used[GetIndex(name)] = true;
+    }
+
+    void usunZmienna(char name)
+    {
+        used[GetIndex(name)] = false;
     }
 
     void wykonajDzialanie(eDzialanie dzialanie, char zmienna1, char zmienna2)
@@ -118,21 +128,27 @@ public:
                 break;
             case PRZYPISZ_SUMA:
                 zmienna[GetIndex(zmienna1)] += zmienna[GetIndex(zmienna2)];
+                used[GetIndex(zmienna1)] = true;
                 break;
             case PRZYPISZ_ROZNICA:
                 zmienna[GetIndex(zmienna1)] -= zmienna[GetIndex(zmienna2)];
+                used[GetIndex(zmienna1)] = true;
                 break;
             case PRZYPISZ_ILOCZYN:
                 zmienna[GetIndex(zmienna1)] *= zmienna[GetIndex(zmienna2)];
+                used[GetIndex(zmienna1)] = true;
                 break;
             case PRZYPISZ_ILORAZ:
                 zmienna[GetIndex(zmienna1)] /= zmienna[GetIndex(zmienna2)];
+                used[GetIndex(zmienna1)] = true;
                 break;
             case ROWNE:
                 zmienna[GetIndex(zmienna1)] = zmienna[GetIndex(zmienna1)] == zmienna[GetIndex(zmienna2)] ? Complex(1) : Complex(0);
+                used[GetIndex(zmienna1)] = true;
                 break;
             case NIEROWNE:
                 zmienna[GetIndex(zmienna1)] = zmienna[GetIndex(zmienna1)] != zmienna[GetIndex(zmienna2)] ? Complex(1) : Complex(0);
+                used[GetIndex(zmienna1)] = true;
                 break;
             case SUMA:
                 zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)] + zmienna[GetIndex(zmienna2)];
@@ -147,22 +163,25 @@ public:
                 zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)] / zmienna[GetIndex(zmienna2)];
                 break;
             case RZECZYWISTA:
-                zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)] / zmienna[GetIndex(zmienna2)];
+                zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)].getReal();
                 break;
             case UROJONA:
+                zmienna[GetIndex('z')] = Complex(0, zmienna[GetIndex(zmienna1)].getImaginary());
                 break;
             case AMPLITUDA:
+                zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)].getAmplitude();
                 break;
             case FAZA:
+                zmienna[GetIndex('z')] = zmienna[GetIndex(zmienna1)].getPhase();
                 break;
-            case USUN:
+            default:
+                cout << "Brak znaku dzialania" << endl;
                 break;
         }
     }
 
     void zapiszStala(char name, string matching)
     {
-        cout << "Test: " << matching << endl;
         regex zmienna("^([a-z])$");
         regex rzeczywista("^(\\-?(?:\\d*\\.)?\\d+)$");
         regex complex("^\\((\\-?(?:\\d*\\.)?\\d+)\\s*\\,\\s*(\\-?(?:\\d*\\.)?\\d+)\\)$");
@@ -190,19 +209,19 @@ public:
         try
         {
             char wynik;
-            regex headRegex("^([a-z])\\s*(=|\\+=|-=|\\*=|\\/=|==|!=)\\s*([a-z]|(?:\\-?(?:\\d*\\.)?\\d+)|\\((?:\\-?(?:\\d*\\.)?\\d+)\\s*\\,\\s*(?:\\-?(?:\\d*\\.)?\\d+)\\))(?:\\s*(\\+|\\-|\\*|\\/)\\s*([a-z]|(?:\\-?(?:\\d*\\.)?\\d+)|\\((?:\\-(?:\\d*\\.)?\\d+)\\s*\\,\\s*(?:\\-?(?:\\d*\\.)?\\d+)\\)))?$");
+            regex headRegex("^([a-z])\\s*(=|\\+=|-=|\\*=|\\/=|==|!=)\\s*([a-z]|(?:\\-?(?:\\d*\\.)?\\d+)|\\((?:\\-?(?:\\d*\\.)?\\d+)\\s*\\,\\s*(?:\\-?(?:\\d*\\.)?\\d+)\\))(?:(?:\\s*(\\+|\\-|\\*|\\/)\\s*([a-z]|(?:\\-?(?:\\d*\\.)?\\d+)|\\((?:\\-(?:\\d*\\.)?\\d+)\\s*\\,\\s*(?:\\-?(?:\\d*\\.)?\\d+)\\)))|(R|I|U|A|F|P|D))?$");
             smatch match;
 
             if(regex_search(wyrazenie, match, headRegex))
             {
-                if(match.str(4).length() < 1)
+                if(match.str(4).length() < 1 && match.str(6).length() < 1)
                 {
                     wynik = match.str(1)[0];
                     eDzialanie dzialanie = PobierzDzialanie(match.str(2));
                     zapiszStala('x', match.str(3));
                     wykonajDzialanie(dzialanie, wynik, 'x');
                 }
-                else if(match.size() == 6)
+                else if(match.str(5).length() >= 1)
                 {
                     wynik = match.str(1)[0];
                     eDzialanie dzialanie1 = PobierzDzialanie(match.str(2));
@@ -213,13 +232,24 @@ public:
                     wykonajDzialanie(dzialanie2, 'x', 'y');
                     wykonajDzialanie(dzialanie1, wynik, 'z');
                 }
+                else if(match.str(6).length() >= 1)
+                {
+                    wynik = match.str(1)[0];
+                    eDzialanie dzialanie1 = PobierzDzialanie(match.str(2));
+                    zapiszStala('x', match.str(3));
+                    eDzialanie dzialanie2 = PobierzDzialanie(match.str(6));
+
+                    wykonajDzialanie(dzialanie2, 'x', 'x');
+                    wykonajDzialanie(dzialanie1, wynik, 'z');
+                    cout << "ZASKOCZYLO";
+                }
                 else
                 {
                     cout << "Cos poszlo nie tak! Sprawdz czy masz odpowiednia ilosc skladnikow! wykryto:" << match.size() << endl;
                     return;
                 }
 
-                cout << "Wynik operacji: " << wynik << endl;
+                cout << "Wynik operacji: " << zmienna[GetIndex(wynik)] << endl;
             }
             else
             {
@@ -239,12 +269,13 @@ public:
 int main()
 {
     Calculator calc;
-    /*cout << "Instrukcja obslugi:" << endl;
+    cout << "Instrukcja obslugi:" << endl;
     cout << "W wyrazeniach mozna uzywac zmiennych. Nazwa zmiennej musi byc pojedyncza litera z zakresu [a-u]" << endl;
-    cout << "Aby wykonac dzialanie nalezy uzyc ktoregos z operatorw przypisania a nastepnie wpisac dzialanie. Stale sa przypisywane do zmiennych x i y. Dostepne operatory:" << endl;
-    cout << "=, +=, -=, *=, /=, ==, !=, +, -, *, /\noraz: R - czesc rzeczywista, I - czesc urojona, A - amplituda, P - faza, D - usuwa zmienna (operatory literalowe sa operatorami przyrostkowymi)" << endl;
-    cout << "Mozna wykonywac tylko pojedyncze operacje na jedno wyrazenie. Aby wyswietlic wszystkie zmienne wpisz W. Aby zakonczyc dzialanie programu nalezy wpisac X." << endl;
-    cout << "Przykladowa operacja: a = 5 + (10, 5)" << endl << endl;*/
+    cout << "Aby wykonac dzialanie nalezy uzyc ktoregos z operatorw przypisania a nastepnie wpisac dzialanie." << endl;
+    cout << "Dostepne operatory:" << endl;
+    cout << "=, +=, -=, *=, /=, ==, !=, +, -, *, /\noraz: R - czesc rzeczywista, I - czesc urojona, A - amplituda, P - faza, D - usuwa zmienna\n(operatory literalowe sa operatorami przyrostkowymi)" << endl;
+    cout << "Aby wyswietlic wszystkie zmienne wpisz W. Aby zakonczyc dzialanie programu nalezy wpisac X." << endl;
+    cout << "Przykladowa operacja: a = 5 + (10, 5)" << endl << endl;
 
     string wyrazenie;
     while(true)
@@ -262,6 +293,10 @@ int main()
             system("cls");
             calc.wyswietlZmienne();
             continue;
+        }
+        else if(wyrazenie[0] >= 'a' && wyrazenie[0] <= 'z' && wyrazenie[1] == 'D')
+        {
+            calc.usunZmienna(wyrazenie[0]);
         }
 
         calc.oblicz(wyrazenie);

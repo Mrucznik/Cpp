@@ -32,7 +32,10 @@ public:
 	
 	friend std::ostream& operator<< (std::ostream& s, const Complex & c)
 	{
-		s << "(" << c.real << "," << c.imaginary << ")";
+        if(c.imaginary != 0)
+		    s << "(" << c.real << "," << c.imaginary << ")";
+        else
+            s << c.real;
 		return s;
 	}
 
