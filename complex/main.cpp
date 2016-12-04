@@ -117,6 +117,7 @@ public:
     void usunZmienna(char name)
     {
         used[GetIndex(name)] = false;
+        zmienna[GetIndex(name)] = Complex(0, 0);
     }
 
     void wykonajDzialanie(eDzialanie dzialanie, char zmienna1, char zmienna2)
