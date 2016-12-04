@@ -1,0 +1,3 @@
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/CMakeFiles/matrix.dir
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/CMakeFiles/edit_cache.dir
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
