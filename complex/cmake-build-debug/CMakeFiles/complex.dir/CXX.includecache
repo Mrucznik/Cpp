@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.cpp
+cmath
+-
+complex.hpp
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+iostream
+-
+
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/main.cpp
+iostream
+-
+regex
+-
+complex.hpp
+I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+
