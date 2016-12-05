@@ -8,90 +8,92 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug"/>
+				<Option working_dir="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="matrix">
-				<Option output="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/matrix.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/../../../../include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include-fixed"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/../../../../mingw32/include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++/mingw32"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++/backward"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 matrix"/>
-					<CompileFile command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="matrix/fast">
-				<Option output="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/matrix.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/../../../../include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include-fixed"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/../../../../mingw32/include"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++/mingw32"/>
-					<Add directory="i:\1_informatyka\programowanie\kompilatory\mingw_new\bin\../lib/gcc/mingw32/4.9.3/include/c++/backward"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 matrix/fast"/>
-					<CompileFile command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug"/>
+				<Option working_dir="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug"/>
+				<Option working_dir="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="I:/1_Informatyka/Programowanie/Kompilatory/MinGW_New/bin/mingw32-make.exe -f &quot;I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="matrix">
+				<Option output="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/matrix" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 matrix"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="matrix/fast">
+				<Option output="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/matrix" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 matrix/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/202145/Desktop/Cpp-exercises/matrix2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/Matrix.cpp">
+		<Unit filename="/home/202145/Desktop/Cpp-exercises/matrix2/Matrix.cpp">
 			<Option target="matrix"/>
 		</Unit>
-		<Unit filename="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/Matrix.h">
+		<Unit filename="/home/202145/Desktop/Cpp-exercises/matrix2/Matrix.h">
 			<Option target="matrix"/>
 		</Unit>
-		<Unit filename="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/main.cpp">
+		<Unit filename="/home/202145/Desktop/Cpp-exercises/matrix2/main.cpp">
 			<Option target="matrix"/>
 		</Unit>
-		<Unit filename="I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/matrix2/CMakeLists.txt">
+		<Unit filename="/home/202145/Desktop/Cpp-exercises/matrix2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

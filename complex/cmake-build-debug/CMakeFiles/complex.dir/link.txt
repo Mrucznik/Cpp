@@ -1,3 +1,1 @@
-"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\complex.dir/objects.a
-I:\1_Informatyka\Programowanie\Kompilatory\MinGW_New\bin\ar.exe cr CMakeFiles\complex.dir/objects.a @CMakeFiles\complex.dir\objects1.rsp
-I:\1_Informatyka\Programowanie\Kompilatory\MinGW_New\bin\g++.exe   -std=c++11 -g   -Wl,--whole-archive CMakeFiles\complex.dir/objects.a -Wl,--no-whole-archive  -o complex.exe -Wl,--out-implib,libcomplex.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\complex.dir\linklibs.rsp
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/complex.dir/main.cpp.o CMakeFiles/complex.dir/complex.cpp.o  -o complex 

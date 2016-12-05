@@ -6,21 +6,23 @@
 
 #IncludeRegexTransform: 
 
-I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.cpp
+/home/202145/Desktop/Cpp-exercises/complex/complex.cpp
 cmath
 -
 complex.hpp
-I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+/home/202145/Desktop/Cpp-exercises/complex/complex.hpp
 
-I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+/home/202145/Desktop/Cpp-exercises/complex/complex.hpp
 iostream
 -
 
-I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/main.cpp
+/home/202145/Desktop/Cpp-exercises/complex/main.cpp
 iostream
 -
-regex
+cmath
+-
+cstdlib
 -
 complex.hpp
-I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.hpp
+/home/202145/Desktop/Cpp-exercises/complex/complex.hpp
 

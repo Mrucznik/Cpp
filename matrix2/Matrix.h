@@ -10,13 +10,13 @@
 class Matrix
 {
 private:
-    MatrixData matrix;
+    MatrixData* matrix;
 
 public:
     class MatrixRef;
 
     //konstruktory/dekonstruktory
-    Matrix(Matrix);
+    Matrix(Matrix&);
     Matrix(int);
     Matrix(int, int);
 
@@ -41,14 +41,13 @@ public:
     friend std::ostream &operator<<(std::ostream&, const Matrix&);
 
     //metody
-    double read(int, int);
+    double read(int, int) const;
     void write(int, int, double);
+    bool checkDimensionsEquality(const Matrix&);
     void load(std::istream);
 
 
 };
-
-
 
 struct MatrixData
 {

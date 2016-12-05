@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/complex.dir/main.cpp.obj"
-  "CMakeFiles/complex.dir/complex.cpp.obj"
+  "CMakeFiles/complex.dir/main.cpp.o"
+  "CMakeFiles/complex.dir/complex.cpp.o"
   "complex.pdb"
-  "complex.exe"
-  "complex.exe.manifest"
-  "libcomplex.dll.a"
+  "complex"
 )
 
 # Per-language clean rules from dependency scanning.

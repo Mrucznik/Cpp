@@ -90,5 +90,31 @@ double Complex::getAmplitude() const
 
 double Complex::getPhase() const
 {
-    return atan2(imaginary, real);
+    if(real == 0)
+    {
+        if(imaginary == 0)
+        {
+            return NAN;
+        }
+        if(imaginary > 0)
+        {
+            return -M_PI;
+        }
+        else
+        {
+            return -M_PI/2;
+        }
+    }
+    else
+    {
+        if(real > 0)
+        {
+            return atan(imaginary/real);
+        }
+        else
+        {
+            return atan(imaginary/real) + M_PI;
+        }
+    }
+    //return atan2(imaginary, real);
 }

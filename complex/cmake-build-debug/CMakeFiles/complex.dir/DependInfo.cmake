@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/complex.cpp" "I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/cmake-build-debug/CMakeFiles/complex.dir/complex.cpp.obj"
-  "I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/main.cpp" "I:/1_Informatyka/Programowanie/Projekty/Moje/C++/Cpp/complex/cmake-build-debug/CMakeFiles/complex.dir/main.cpp.obj"
+  "/home/202145/Desktop/Cpp-exercises/complex/complex.cpp" "/home/202145/Desktop/Cpp-exercises/complex/cmake-build-debug/CMakeFiles/complex.dir/complex.cpp.o"
+  "/home/202145/Desktop/Cpp-exercises/complex/main.cpp" "/home/202145/Desktop/Cpp-exercises/complex/cmake-build-debug/CMakeFiles/complex.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
