@@ -35,7 +35,7 @@ public:
     bool operator==(const Matrix&) const;
     bool operator!=(const Matrix&) const;
 
-    double operator[](unsigned int) const;
+    double* operator[](unsigned int) const;
     MatrixRef operator[](unsigned int);
 
     friend std::ostream &operator<<(std::ostream&, const Matrix&);
@@ -43,10 +43,10 @@ public:
     //metody
     double read(int, int) const;
     void write(int, int, double);
-    bool checkDimensionsEquality(const Matrix&);
     void load(std::istream);
 
-
+private:
+    bool checkDimensionsEquality(const Matrix&) const;
 };
 
 struct MatrixData
@@ -86,6 +86,13 @@ public:
     operator double() const;
     MatrixRef& operator=(double);
     MatrixRef& operator=(const MatrixRef);
+};
+
+//Exceptions
+
+class NonEqualDimensionsException
+{
+
 };
 
 #endif //MATRIX_MATRIX_H
