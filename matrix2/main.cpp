@@ -13,6 +13,7 @@ Matrix loadMatrixFromFile(const char* filename)
     if(stream.good())
     {
         Matrix m(stream);
+        stream.close();
         return m;
     }
     else
