@@ -65,10 +65,17 @@ int main()
         DW(m1==m4);
         DW(m2==m2);
 
-        cout << "\n\n\nDostep do pojedynczego elementu:\n";
+        cout << "\n\n\n---------------------Dostep do pojedynczego elementu:\n";
         DW(m3(0, 0));
         DW(m3(2, 1));
         DW(m3(1, 2));
+
+        cout << "\n\n\n---------------------Rozroznanie pomiedzy operacja zapisu a odczytu - do sprawdzenia potrzebny debugger:\n";
+        m3(0, 0) = 5;
+        if(m3(0, 0) == 5)
+        {
+            m3(1, 1) = m3(0, 0);
+        }
 
         cout << "\n\n\nZle wyrazenia:\n";
         //DW(m3(1, 3)); //out of range
