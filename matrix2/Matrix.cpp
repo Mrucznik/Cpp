@@ -1,4 +1,4 @@
-
+#include <fstream>
 #include "Matrix.h"
 
 Matrix::Matrix(Matrix& m)
@@ -7,12 +7,12 @@ Matrix::Matrix(Matrix& m)
     matrix = m.matrix;
 }
 
-Matrix::Matrix(int n)
+Matrix::Matrix(unsigned int n)
 {
     matrix = new MatrixData(n);
 }
 
-Matrix::Matrix(int r, int c)
+Matrix::Matrix(unsigned int r, unsigned int c)
 {
     matrix = new MatrixData(r, c);
 }
@@ -39,9 +39,9 @@ Matrix &Matrix::operator+=(const Matrix &m)
     if(!isMatrixDimensionsAreEqual(m))
         throw NonEqualSizeMatrixException();
 
-    for(int i=0; i<matrix->rows; i++)
+    for(unsigned int i=0; i<matrix->rows; i++)
     {
-        for(int j=0; j<matrix->columns; j++)
+        for(unsigned int j=0; j<matrix->columns; j++)
         {
             write(i, j, read(i, j) + m.read(i, j));
         }
@@ -54,9 +54,9 @@ Matrix &Matrix::operator-=(const Matrix &m)
     if(!isMatrixDimensionsAreEqual(m))
         throw NonEqualSizeMatrixException();
 
-    for(int i=0; i<matrix->rows; i++)
+    for(unsigned int i=0; i<matrix->rows; i++)
     {
-        for(int j=0; j<matrix->columns; j++)
+        for(unsigned int j=0; j<matrix->columns; j++)
         {
             write(i, j, read(i, j) - m.read(i, j));
         }
@@ -76,11 +76,11 @@ Matrix &Matrix::operator*=(const Matrix &m)
     auto result = new MatrixData(matrix->rows, m.matrix->columns);
 
     int n = matrix->columns;
-    for (int i = 0; i < matrix->rows; i++)
+    for (unsigned int i = 0; i < matrix->rows; i++)
     {
-        for(int j = 0; j < m.matrix->columns; j++)
+        for(unsigned int j = 0; j < m.matrix->columns; j++)
         {
-            for(int r = 0; r < n; r++)
+            for(unsigned int r = 0; r < n; r++)
             {
                 result->matrix[i][j] = read(i,r)*m.read(r,j);
             }
@@ -108,11 +108,11 @@ Matrix Matrix::operator*(const Matrix &m) const
 {
     Matrix result(matrix->rows, m.matrix->columns);
     int n = matrix->columns;
-    for (int i = 0; i < matrix->rows; i++)
+    for (unsigned int i = 0; i < matrix->rows; i++)
     {
-        for(int j = 0; j < m.matrix->columns; j++)
+        for(unsigned int j = 0; j < m.matrix->columns; j++)
         {
-            for(int r = 0; r < n; r++)
+            for(unsigned int r = 0; r < n; r++)
             {
                 result.write(i,j, read(i,r)*m.read(r,j));
             }
@@ -123,9 +123,9 @@ Matrix Matrix::operator*(const Matrix &m) const
 
 bool Matrix::operator==(const Matrix &m) const
 {
-    for(int i=0; i<matrix->rows; i++)
+    for(unsigned int i=0; i<matrix->rows; i++)
     {
-        for(int j=0; j<matrix->columns; j++)
+        for(unsigned int j=0; j<matrix->columns; j++)
         {
             if(read(i, j) != m.read(i, j))
             {
@@ -151,24 +151,50 @@ MatrixRef Matrix::operator()(unsigned int i, unsigned int j)
     return MatrixRef(*this, i, j);
 }
 
-std::basic_ostream<char, std::char_traits<char>> &operator<<(std::ostream &, const Matrix &)
+std::basic_ostream<char, std::char_traits<char>> &operator<<(std::ostream &stream, const Matrix &m)
 {
-    return <#initializer#>;
+    stream << "Matrix (" << m.matrix->rows << ", " << m.matrix->columns << "):\n";
+    for (unsigned int i = 0; i < m.matrix->rows; ++i)
+    {
+        for (unsigned int j = 0; j < m.matrix->columns; ++j)
+        {
+            stream << m.read(i, j) << " ";
+        }
+        stream << "\n";
+    }
+    return stream;
 }
 
-double Matrix::read(int i, int j) const
+double Matrix::read(unsigned int i, unsigned int j) const
 {
     return matrix->matrix[i][j];
 }
 
-void Matrix::write(int i, int j, double v)
+void Matrix::write(unsigned int i, unsigned int j, double v)
 {
+    matrix = matrix->detach();
     matrix->matrix[i][j] = v;
 }
 
-void Matrix::load(std::istream)
+void Matrix::load(std::ifstream stream)
 {
+    unsigned int rows, columns;
+    stream >> rows;
+    stream >> columns;
 
+    if(--matrix->referenceCount == 0)
+    {
+        delete matrix;
+    }
+    matrix = new MatrixData(rows, columns);
+
+    for (int i = 0; i < matrix->rows; ++i)
+    {
+        for (int j = 0; j < matrix->columns; ++j)
+        {
+            stream >> matrix->matrix[i][j];
+        }
+    }
 }
 
 bool Matrix::isMatrixDimensionsAreEqual(const Matrix& m)
@@ -181,44 +207,66 @@ bool Matrix::isMatrixDimensionsAreMultiplicable(const Matrix &m)
     return matrix->columns == m.matrix->rows;
 }
 
-//----------------------------------------------------------
-MatrixData::MatrixData(int)
+//------------------------------MatrixData----------------------------
+MatrixData::MatrixData()
 {
+    referenceCount = 1;
 
+    matrix = new double*[rows];
+    for (unsigned int i = 0; i < rows; ++i)
+    {
+        matrix[i] = new double[columns];
+    }
 }
 
-MatrixData::MatrixData(int, int)
+MatrixData::MatrixData(unsigned int n) :
+    rows(n), columns(n), MatrixData()
 {
+}
 
+MatrixData::MatrixData(unsigned int n, unsigned int m) :
+    rows(n), columns(m), MatrixData()
+{
+}
+
+MatrixData::MatrixData(unsigned int n, unsigned int m, const double value) :
+        rows(n), columns(m), MatrixData()
+{
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < columns; ++j)
+        {
+            matrix[i][j] = value;
+        }
+    }
 }
 
 MatrixData::~MatrixData()
 {
-
+    for (unsigned int i = 0; i < rows; ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 }
 
 MatrixData *MatrixData::detach()
 {
-    return nullptr;
+    if (referenceCount == 1)
+        return this;
+    MatrixData *data = new MatrixData(rows, columns);
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < columns; ++j)
+        {
+            data->matrix[i][j] = matrix[i][j];
+        }
+    }
+    referenceCount--;
+    return data;
 }
 
-void MatrixData::assign(unsigned int, unsigned int, const double **)
-{
-
-}
-
-MatrixData::MatrixData(const MatrixData &)
-{
-
-}
-
-MatrixData &MatrixData::operator=(const MatrixData &)
-{
-    return <#initializer#>;
-}
-
-
-//----------------------------------------------------------
+//--------------------------MatrixRef--------------------------------
 MatrixRef::MatrixRef(Matrix &m, unsigned int i, unsigned int j) :
     matrix(m), row(i), column(j)
 {

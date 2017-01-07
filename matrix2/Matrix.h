@@ -21,8 +21,8 @@ public:
 
     //konstruktory/dekonstruktory
     Matrix(Matrix&);
-    Matrix(int);
-    Matrix(int, int);
+    Matrix(unsigned int);
+    Matrix(unsigned int, unsigned int);
 
     ~Matrix();
 
@@ -49,9 +49,9 @@ private:
     bool isMatrixDimensionsAreEqual(const Matrix&);
     bool isMatrixDimensionsAreMultiplicable(const Matrix&);
 public:
-    double read(int, int) const;
-    void write(int, int, double);
-    void load(std::istream);
+    double read(unsigned int, unsigned int) const;
+    void write(unsigned int, unsigned int, double);
+    void load(std::ifstream);
 
 
 };
@@ -64,18 +64,18 @@ public:
     unsigned int rows;
     unsigned int columns;
     double** matrix;
-    int referenceCount;
+    unsigned int referenceCount;
 
-    MatrixData(int);
-    MatrixData(int, int);
+    MatrixData(unsigned int);
+    MatrixData(unsigned int, unsigned int);
+    MatrixData(unsigned int, unsigned int, const double);
 
     ~MatrixData();
 
     MatrixData* detach();
-    void assign(unsigned int, unsigned int, const double**);
 private:
+    MatrixData();
     MatrixData(const MatrixData&);
-
     MatrixData& operator=(const MatrixData&);
 };
 
