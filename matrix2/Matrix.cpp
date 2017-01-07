@@ -1,7 +1,7 @@
 #include <fstream>
 #include "Matrix.h"
 
-Matrix::Matrix(Matrix& m)
+Matrix::Matrix(const Matrix& m)
 {
     m.matrix->referenceCount++;
     matrix = m.matrix;
@@ -208,7 +208,7 @@ bool Matrix::isMatrixDimensionsAreMultiplicable(const Matrix &m)
 }
 
 //------------------------------MatrixData----------------------------
-MatrixData::MatrixData()
+void MatrixData::Initialize()
 {
     referenceCount = 1;
 
@@ -220,18 +220,21 @@ MatrixData::MatrixData()
 }
 
 MatrixData::MatrixData(unsigned int n) :
-    rows(n), columns(n), MatrixData()
+    rows(n), columns(n)
 {
+    Initialize();
 }
 
 MatrixData::MatrixData(unsigned int n, unsigned int m) :
-    rows(n), columns(m), MatrixData()
+    rows(n), columns(m)
 {
+    Initialize();
 }
 
 MatrixData::MatrixData(unsigned int n, unsigned int m, const double value) :
-        rows(n), columns(m), MatrixData()
+        rows(n), columns(m)
 {
+    Initialize();
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)

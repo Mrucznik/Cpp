@@ -8,8 +8,16 @@
 #include <iostream>
 
 //Exceptions
-class NonEqualSizeMatrixException;
-class CanNotBeMultipliedException;
+class NonEqualSizeMatrixException
+{
+};
+class CanNotBeMultipliedException
+{
+};
+
+class Matrix;
+class MatrixData;
+class MatrixRef;
 
 class Matrix
 {
@@ -17,10 +25,8 @@ private:
     MatrixData* matrix;
 
 public:
-    class MatrixRef;
-
     //konstruktory/dekonstruktory
-    Matrix(Matrix&);
+    Matrix(const Matrix&);
     Matrix(unsigned int);
     Matrix(unsigned int, unsigned int);
 
@@ -58,7 +64,7 @@ public:
 
 
 //----------------------------------------------------------
-struct MatrixData
+class MatrixData
 {
 public:
     unsigned int rows;
@@ -74,9 +80,10 @@ public:
 
     MatrixData* detach();
 private:
-    MatrixData();
     MatrixData(const MatrixData&);
     MatrixData& operator=(const MatrixData&);
+
+    void Initialize();
 };
 
 
