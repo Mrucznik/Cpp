@@ -6,19 +6,45 @@
 #define MATRIX_MATRIX_H
 
 #include <iostream>
+#include <cstring>
 
-//Exceptions
-class NonEqualSizeMatrixException
+//------------Exceptions
+class Exception
 {
-};
-class CanNotBeMultipliedException
-{
+public:
+    char* name;
+
+    Exception(const char* name)
+    {
+        this->name = new char[strlen(name)];
+        strcpy(this->name, name);
+    };
 };
 
+class NonEqualSizeException : public  Exception
+{
+public:
+    NonEqualSizeException() :  Exception("NonEqualSizeException") {};
+};
+
+class CanNotBeMultipliedException : public Exception
+{
+public:
+    CanNotBeMultipliedException() : Exception("CanNotBeMultipliedException") {};
+};
+
+class OutOfRangeException : public Exception
+{
+public:
+    OutOfRangeException() : Exception("OutOfRangeException") {};
+};
+
+//------------Declarations
 class Matrix;
 class MatrixData;
 class MatrixRef;
 
+//------------
 class Matrix
 {
 private:
@@ -29,6 +55,7 @@ public:
     Matrix(const Matrix&);
     Matrix(unsigned int);
     Matrix(unsigned int, unsigned int);
+    Matrix(std::ifstream& stream);
 
     ~Matrix();
 
@@ -52,14 +79,11 @@ public:
 
     //metody
 private:
-    bool isMatrixDimensionsAreEqual(const Matrix&);
-    bool isMatrixDimensionsAreMultiplicable(const Matrix&);
+    bool isMatrixDimensionsAreEqual(const Matrix&) const;
+    bool isMatrixDimensionsAreMultiplicable(const Matrix&) const;
 public:
     double read(unsigned int, unsigned int) const;
     void write(unsigned int, unsigned int, double);
-    void load(std::ifstream);
-
-
 };
 
 
