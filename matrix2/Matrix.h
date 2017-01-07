@@ -7,6 +7,10 @@
 
 #include <iostream>
 
+//Exceptions
+class NonEqualSizeMatrixException;
+class CanNotBeMultipliedException;
+
 class Matrix
 {
 private:
@@ -35,20 +39,25 @@ public:
     bool operator==(const Matrix&) const;
     bool operator!=(const Matrix&) const;
 
-    double operator[](unsigned int) const;
-    MatrixRef operator[](unsigned int);
+    double operator()(unsigned int, unsigned int) const;
+    MatrixRef operator()(unsigned int, unsigned int);
 
     friend std::ostream &operator<<(std::ostream&, const Matrix&);
 
     //metody
+private:
+    bool isMatrixDimensionsAreEqual(const Matrix&);
+    bool isMatrixDimensionsAreMultiplicable(const Matrix&);
+public:
     double read(int, int) const;
     void write(int, int, double);
-    bool checkDimensionsEquality(const Matrix&);
     void load(std::istream);
 
 
 };
 
+
+//----------------------------------------------------------
 struct MatrixData
 {
 public:
@@ -72,6 +81,7 @@ private:
 
 
 
+//----------------------------------------------------------
 class MatrixRef
 {
 private:
