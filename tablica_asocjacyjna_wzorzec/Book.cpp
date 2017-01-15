@@ -8,5 +8,6 @@ Book::Book(const char *autor, const char *category, unsigned int pages) :
 
 std::ostream &operator<<(std::ostream &os, const Book &book)
 {
-    os << "Book: author" << book.author << ", category: " << book.category << ", pages: " << book.pages << "\n";
+    os << "Author: " << book.author << ", category: " << book.category << ", pages: " << book.pages << "\n";
+    return os;
 }

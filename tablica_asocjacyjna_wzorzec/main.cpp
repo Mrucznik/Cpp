@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Employee.h"													//Defines class Employee
+#include "Book.h"
 #include "Map.h"														//Defines template Map<Key, Value>
 
 using namespace std;
@@ -25,4 +26,21 @@ int main(void) {
     database = newDatabase;												//Update original database
 
     cout << database << endl;											//Print original database
+
+    Map<string, Book> library;
+    library.add("Prawo", Book("F. Bastiat", "Nauki spoleczne", 69));
+    library.add("Interwencjonizm, czyli wladza a rynek", Book("Murray Newton Rothbard", "Anarchokapitalizm, Austriacka Szkola Ekonomii", 364));
+    library.add("Dziewczyna z pociagu", Book("Paula Hawkins", "Thriller/sensacja/kryminal", 0));
+
+    cout << library << endl;
+
+    Map<string, Book> newLibrary = library;
+    Book* book;
+    book = newLibrary.find("Prawo");
+    book->category = "Prawo";
+    book = newLibrary.find("Dziewczyna z pociagu");
+    book->pages = 328;
+
+    library = newLibrary;
+    cout << library << endl;
 };
