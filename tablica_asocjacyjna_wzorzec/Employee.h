@@ -1,13 +1,19 @@
-//
-// Created by Mrucznik on 15.01.2017.
-//
-
 #ifndef TABLICA_ASOCJACYJNA_WZORZEC_EMPLOYEE_H
 #define TABLICA_ASOCJACYJNA_WZORZEC_EMPLOYEE_H
 
 
-class Employee {
+#include <ostream>
 
+class Employee
+{
+public:
+    const char* name;
+    const char* position;
+    unsigned int age;
+
+    Employee(const char* name, const char* position, unsigned int age);
+
+    friend std::ostream &operator<<(std::ostream &os, const Employee &employee);
 };
 
 
