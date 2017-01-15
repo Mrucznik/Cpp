@@ -1,0 +1,14 @@
+//
+// Created by Mrucznik on 15.01.2017.
+//
+
+#ifndef TABLICA_ASOCJACYJNA_WZORZEC_MAP_H
+#define TABLICA_ASOCJACYJNA_WZORZEC_MAP_H
+
+
+class Map {
+
+};
+
+
+#endif //TABLICA_ASOCJACYJNA_WZORZEC_MAP_H

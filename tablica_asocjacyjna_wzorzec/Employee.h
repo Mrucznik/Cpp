@@ -1,0 +1,14 @@
+//
+// Created by Mrucznik on 15.01.2017.
+//
+
+#ifndef TABLICA_ASOCJACYJNA_WZORZEC_EMPLOYEE_H
+#define TABLICA_ASOCJACYJNA_WZORZEC_EMPLOYEE_H
+
+
+class Employee {
+
+};
+
+
+#endif //TABLICA_ASOCJACYJNA_WZORZEC_EMPLOYEE_H
