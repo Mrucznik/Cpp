@@ -28,9 +28,9 @@ int main(void) {
     cout << database << endl;											//Print original database
 
     Map<string, Book> library;
-    library.add("Prawo", Book("F. Bastiat", "Nauki spoleczne", 69));
-    library.add("Interwencjonizm, czyli wladza a rynek", Book("Murray Newton Rothbard", "Anarchokapitalizm, Austriacka Szkola Ekonomii", 364));
-    library.add("Dziewczyna z pociagu", Book("Paula Hawkins", "Thriller/sensacja/kryminal", 0));
+    library.add("Prawo", Book("F. Bastiat", "Nauki spoleczne", 69, false));
+    library.add("Interwencjonizm, czyli wladza a rynek", Book("Murray Newton Rothbard", "Anarchokapitalizm, Austriacka Szkola Ekonomii", 364, true));
+    library.add("Dziewczyna z pociagu", Book("Paula Hawkins", "Thriller/sensacja/kryminal", 0, false));
 
     cout << library << endl;
 

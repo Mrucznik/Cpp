@@ -9,10 +9,11 @@ public:
     const char* author;
     const char* category;
     unsigned int pages;
+    bool booked;
 
     friend std::ostream &operator<<(std::ostream &os, const Book &book);
 
-    Book(const char* autor, const char* category, unsigned int pages);
+    Book(const char* autor, const char* category, unsigned int pages, bool booked);
 };
 
 
